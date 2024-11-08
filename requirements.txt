@@ -1,2 +1,17 @@
-ipykernel
-python-dotenv
+# Requirements for Choke Coverage Analysis
+
+The project relies on Python libraries for image processing, numerical operations, and visualization.
+Below are the dependencies that need to be installed for the project to work properly.
+
+```
+numpy==1.23.5
+pillow==9.3.0
+matplotlib==3.7.1
+```
+
+### Explanation:
+- **numpy**: For numerical operations on image data, like array manipulations and calculations.
+- **pillow (PIL)**: Used for opening and manipulating image files.
+- **matplotlib**: For visualizing the results, including plotting graphs and displaying images.
+
+
