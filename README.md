@@ -1,5 +1,4 @@
-# Measurement of Choke Coverage in Carbon Black Reactor
-
+# Choke Coverage Analysis
 
 ## Overview
 
@@ -25,7 +24,11 @@ The project is split into three main stages:
    cd choke_coverage_analysis
    ```
 
-2. Make sure you have the required Python libraries installed:
+2. Install the required Python libraries using `pip`:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   Alternatively, you can install them manually:
    ```bash
    pip install numpy pillow matplotlib
    ```
@@ -55,9 +58,4 @@ After running the batch analysis, you will see:
 Author: Kimia K
 
 Feel free to reach out if you have any questions or suggestions for improvements!
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 
