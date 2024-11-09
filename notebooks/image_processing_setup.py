@@ -21,7 +21,7 @@ def load_and_preprocess_image(image_path):
 def define_circle_region(gray_array):
     # Calculate the center and radius of the circle for the region of interest
     height, width = gray_array.shape
-    center_x, center_y = width // 2, height // 2
-    radius = min(center_x, center_y) // 2
+    center_x, center_y = (width // 2) - 10, height // 2
+    radius = min(center_x, center_y) // 3
 
     return center_x, center_y, radius
