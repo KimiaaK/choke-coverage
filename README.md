@@ -47,6 +47,17 @@ After running the batch analysis, you will see:
 - The percentage of white pixels for each image.
 - The average percentage of white pixels across all images.
 - A linear plot visualizing the rate of white pixels across the images.
+- A visual representation of the measurement
+
+  
+## Analysis Results
+
+Here are some example outputs of the image processing:
+
+### Original Image, Thresholded Image, and Visual Representation
+![Image Results 1](results/img1.png)
+![Image Results 2](results/img2.png)
+
 
 ## Requirements
 
