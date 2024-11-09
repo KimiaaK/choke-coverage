@@ -1,9 +1,19 @@
+# File: batch_process_images.py
+
 from process_image import process_image
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 
-def batch_process_images(image_paths):
+def batch_process_images(image_folder):
+    # Gather all image paths from the specified folder
+    image_paths = [
+        os.path.join(image_folder, file)
+        for file in os.listdir(image_folder)
+        if file.endswith((".png", ".jpg", ".jpeg"))
+    ]
+
     percentages = [process_image(path) for path in image_paths]
 
     # Calculate and print average percentage
@@ -33,12 +43,7 @@ def batch_process_images(image_paths):
     plt.show()
 
 
-# List of image paths
+# Folder containing images
 if __name__ == "__main__":
-    image_paths = [
-        "images/Pic1.png",
-        "images/Pic2.png",
-        "images/Pic3.png",
-        "images/Pic4.png",
-    ]
-    batch_process_images(image_paths)
+    image_folder = "images"
+    batch_process_images(image_folder)
