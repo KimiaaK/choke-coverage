@@ -1,5 +1,3 @@
-# File: batch_process_images.py
-
 from process_image import process_image
 import numpy as np
 import matplotlib.pyplot as plt
