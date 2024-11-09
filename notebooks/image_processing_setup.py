@@ -21,7 +21,10 @@ def load_and_preprocess_image(image_path):
 def define_circle_region(gray_array):
     # Calculate the center and radius of the circle for the region of interest
     height, width = gray_array.shape
-    center_x, center_y = (width // 2) - 10, height // 2
-    radius = min(center_x, center_y) // 3
+    radius = min(height, width) // 3
+    center_x = width // 2 - 10  # Adjusted 10 pixels to the left
+    center_y = height // 2
+    y, x = np.ogrid[:height, :width]
+    mask = (x - center_x) ** 2 + (y - center_y) ** 2 <= radius**2
 
-    return center_x, center_y, radius
+    return center_x, center_y, radius, mask
