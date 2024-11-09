@@ -24,7 +24,23 @@ def batch_process_images(image_paths):
         f"\nAverage percentage of white pixels across all images: {average_percentage:.2f}%"
     )
 
-    # Plotting the percentages as a linear plot
+    # Plotting the percentages for each image
+    plt.figure(figsize=(10, 6))
+    plt.plot(
+        range(1, len(percentages) + 1),
+        percentages,
+        marker="o",
+        linestyle="-",
+        color="b",
+    )
+    plt.title("White Pixels Percentage for Each Image")
+    plt.xlabel("Image Number")
+    plt.ylabel("Percentage of White Pixels (%)")
+    plt.xticks(range(1, len(percentages) + 1))
+    plt.grid(True)
+    plt.show()
+
+    # Plotting the sorted percentages as a linear plot
     percentages_sort = np.sort(percentages)
     plt.figure(figsize=(8, 5))
     plt.plot(
@@ -34,7 +50,7 @@ def batch_process_images(image_paths):
         linestyle="-",
         color="b",
     )
-    plt.title("Rate of White Pixels Across Images")
+    plt.title("Rate of White Pixels Across Images (Sorted)")
     plt.xlabel("Image Number")
     plt.ylabel("Percentage of White Pixels (%)")
     plt.xticks(range(1, len(percentages_sort) + 1))  # Set x-ticks to image indices
@@ -44,10 +60,10 @@ def batch_process_images(image_paths):
 
 # List of image paths
 image_paths = [
-    "Pic1.png",
-    "Pic2.png",
-    "Pic3.png",
-    "Pic4.png",
+    "images/Pic1.png",
+    "images/Pic2.png",
+    "images/Pic3.png",
+    "images/Pic4.png",
 ]
 
 # Batch process images
