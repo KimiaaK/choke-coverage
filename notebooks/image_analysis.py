@@ -11,22 +11,20 @@ def process_image(image_path, lower_threshold=165, upper_threshold=255):
     image, gray_array = load_and_preprocess_image(image_path)
 
     # Define the circular region of interest
-    center_x, center_y, radius = define_circle_region(gray_array)
-
-    # Create a mask for the circular region
-    y, x = np.ogrid[: gray_array.shape[0], : gray_array.shape[1]]
-    distance_from_center = (x - center_x) ** 2 + (y - center_y) ** 2
-    mask = distance_from_center <= radius**2
+    center_x, center_y, radius, mask = define_circle_region(gray_array)
 
     # Apply the threshold and mask to identify white pixels
-    thresholded_image = (gray_array >= lower_threshold) & (
-        gray_array <= upper_threshold
-    )
-    white_pixels_in_circle = np.sum(thresholded_image & mask)
-    total_pixels_in_circle = np.sum(mask)
+    # Apply the thresholds to create a black and white image, then apply the mask
+    thresholded_image = (
+        (gray_array >= lower_threshold) & (gray_array <= upper_threshold)
+    ) & mask
+    # Create a color version of the grayscale image
+    color_image = np.stack((gray_array, gray_array, gray_array), axis=-1)
+    color_image[thresholded_image] = [255, 0, 0]  # Red color for white pixels
 
-    # Calculate the percentage of white pixels
-    white_pixels_percentage = (white_pixels_in_circle / total_pixels_in_circle) * 100
+    white_pixels_count = np.sum(thresholded_image)
+    total_pixels_in_circle = np.sum(mask)
+    white_pixels_percentage = (white_pixels_count / total_pixels_in_circle) * 100
 
     # Visual representation for debugging (optional)
-    return white_pixels_percentage, image, thresholded_image, mask
+    return white_pixels_percentage, image, thresholded_image, color_image, mask
